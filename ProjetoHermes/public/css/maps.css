@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-image: url(/image/maps/vans.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+header {
+    display: flex;
+    height: 100vh;
+}
+
+.menu-lateral {
+    width: 0px; /* Esconde o menu lateral inicialmente */
+    background-color: #060630;
+    transition: width 0.5s ease;
+    position: fixed; /* Ensures menu stays fixed on the side */
+    top: 0; /* Positions menu from top to bottom */
+    left: 0; /* Positions menu on the left side */
+    
+}
+.menu-lateral.escondido {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Desativa a intera��o com o menu quando oculto */
+}
+
+.menu-lateral.expandido {
+    width: 15%;
+    height: 100vh;
+}
+
+.logo {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.logo img {
+    width: 23%;
+    height: auto;
+}
+
+nav {
+    padding: 10px 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+nav li {
+    margin-bottom: 10px;
+    background-color: aliceblue;
+}
+
+.opcao{
+    text-align: center;
+    padding: 10px;
+    color: rgb(247, 5, 5);
+    transition: color 0.5s ease;
+}
+.rotas{
+    text-align: center;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    transition: color 0.5s ease;
+}
+nav a {
+    display: block;
+    
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #333;
+}
+
+.conteudo-principal {
+    flex: 1;
+    padding: 20px;
+}
+
+.trigger-button{
+    margin-left: 5%;
+    margin-top: 2%;
+
+}
+
+h1{
+    margin-top: 10%;
+    margin-left: 15%;
+    border: 10px;
+    color: aliceblue;
+    border: 5px;
+    border-color: #060630;
+}
+
+body.rota1 {
+    background-image: url('caminho/para/mapa1.jpg');
+}
+
+body.rota2 {
+    background-image: url('caminho/para/mapa2.jpg');
+}
