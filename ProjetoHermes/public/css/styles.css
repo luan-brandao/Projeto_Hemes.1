@@ -2,8 +2,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-image: url(/image/main/home-van-branca.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #ffffff; /* Ajuste da cor do texto para branco */
 }
 
 .navbar {
@@ -11,14 +13,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f8f9fa;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para melhor contraste */
     border-bottom: 1px solid #e7e7e7;
 }
 
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: #ffffff; /* Ajuste da cor do texto para branco */
     text-decoration: none;
 }
 
@@ -35,7 +37,7 @@ body {
 
 .navbar-nav .nav-link {
     text-decoration: none;
-    color: #007bff;
+    color: #ffffff; /* Ajuste da cor do texto para branco */
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
@@ -53,14 +55,11 @@ body {
 }
 
 main {
-    background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 main h1, main h2, main h3 {
-    color: #007bff;
+    color: #ffffff; /* Ajuste da cor do texto para branco */
 }
 
 main h1 {
@@ -92,4 +91,5 @@ main ul {
 
 main ul li {
     margin-bottom: 10px;
+    color: #ffffff; /* Ajuste da cor do texto para branco */
 }
