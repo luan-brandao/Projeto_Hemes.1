@@ -1,108 +1,67 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-image: url(/image/maps/vans.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
+/* Estilo para o botão de logout */
+.user-profile form {
+    margin-bottom: 10px; /* Espaçamento entre o botão de logout e o nome do usuário */
 }
 
-header {
-    display: flex;
-    height: 100vh;
+/* Estilo para o botão de toggle */
+.toggle-button {
+    position: absolute;
+    top: 20px; /* Ajuste conforme necessário */
+    right: -40px; /* Ajuste conforme necessário */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 9999; /* Garante que o botão esteja acima de outros elementos */
 }
 
-.menu-lateral {
-    width: 0px; /* Esconde o menu lateral inicialmente */
-    background-color: #060630;
-    transition: width 0.5s ease;
-    position: fixed; /* Ensures menu stays fixed on the side */
-    top: 0; /* Positions menu from top to bottom */
-    left: 0; /* Positions menu on the left side */
-    
-}
-.menu-lateral.escondido {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none; /* Desativa a intera��o com o menu quando oculto */
+/* Estilo para a div lateral */
+.lateral {
+    position: fixed; /* Alterado para position: fixed */
+    top: 0;
+    left: -200px; /* Alterado para fora da tela */
+    width: 200px; /* largura da div */
+    height: 100%; /* altura igual à tela */
+
+    padding: 20px; /* espaçamento interno */
+    transition: transform 0.3s ease; /* transição suave */
+    z-index: 1000; /* Garante que a lateral esteja acima do mapa */
 }
 
-.menu-lateral.expandido {
-    width: 15%;
-    height: 100vh;
+.lateral.abrir {
+    left: 0; /* Mostra a lateral ao deslizar para a esquerda */
 }
 
-.logo {
-    text-align: center;
-    padding: 10px 0;
-}
-
-.logo img {
-    width: 23%;
-    height: auto;
-}
-
-nav {
-    padding: 10px 0;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-}
-
-
-nav li {
+/* Estilo para os itens de rota */
+.opcao {
+    font-size: 18px;
     margin-bottom: 10px;
-    background-color: aliceblue;
 }
 
-.opcao{
-    text-align: center;
-    padding: 10px;
-    color: rgb(247, 5, 5);
-    transition: color 0.5s ease;
-}
-.rotas{
-    text-align: center;
-    padding: 10px;
-    color: rgb(0, 0, 0);
-    transition: color 0.5s ease;
-}
-nav a {
-    display: block;
-    
+.rotas {
+    font-size: 16px;
+    color: rgb(255, 136, 0);
     text-decoration: none;
+    cursor: pointer; /* Alteração para indicar que é clicável */
 }
 
-nav a:hover {
-    background-color: #333;
+.rotas:hover {
+    text-decoration: underline;
 }
 
-.conteudo-principal {
-    flex: 1;
-    padding: 20px;
+/* Estilo para o mapa */
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa 100% da largura do viewport */
+    height: 100%; /* Ocupa 100% da altura do viewport */
+    transition: margin-left 0.3s ease; /* Transição suave para o margin-left */
+    z-index: 1; /* Garante que o mapa esteja abaixo da lateral */
 }
 
-.trigger-button{
-    margin-left: 5%;
-    margin-top: 2%;
-
-}
-
-h1{
-    margin-top: 10%;
-    margin-left: 15%;
-    border: 10px;
-    color: aliceblue;
-    border: 5px;
-    border-color: #060630;
-}
-
-body.rota1 {
-    background-image: url('caminho/para/mapa1.jpg');
-}
-
-body.rota2 {
-    background-image: url('caminho/para/mapa2.jpg');
+/* Estilo para o mapa quando a lateral está aberta */
+#map.lateral-aberta {
+    margin-left: 200px; /* Deixa espaço para a lateral quando aberta */
 }

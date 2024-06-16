@@ -50,6 +50,12 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'superadmin' => ['nullable', 'boolean'],
+            'driver' => ['nullable', 'boolean'],
+            'cnh' => ['nullable', 'string', 'max:20'],
+            'vehicle' => ['nullable', 'string', 'max:255'],
+            'vehicle_doc' => ['nullable', 'string', 'max:255'],
+            'passenger_capacity' => ['nullable', 'integer', 'min:0'],
         ]);
     }
 
@@ -65,6 +71,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'superadmin' => isset($data['superadmin']) ? true : false,
+            'driver' => isset($data['driver']) ? true : false,
+            'cnh' => $data['cnh'],
+            'vehicle' => $data['vehicle'],
+            'vehicle_doc' => $data['vehicle_doc'],
+            'passenger_capacity' => $data['passenger_capacity'] ?? null,
         ]);
     }
 }

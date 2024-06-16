@@ -3,19 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Route;
+use App\Models\User;
 
 class MapsController extends Controller
 {
-    public function maps( ){
+    /**
+     * Retorna a view 'maps' com os dados necessários para exibir o mapa.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function maps()
+    {
         // Verificar se o usuário está autenticado
-        if (auth()->check()) {
-            // Recuperar o nome do usuário autenticado
-            $userName = auth()->user()->name;
-        } else {
-            $userName = null;
-        }
+        $userName = auth()->check() ? auth()->user()->name : null;
 
-        // Passar o nome do usuário para a view
-        return view ('maps', compact('userName'));
+        // Recuperar todas as rotas do banco de dados
+        $routes = Route::all();
+
+        // Recuperar dados dos motoristas para adicionar marcadores no mapa
+        $motoristas = User::where('driver', true)->get(); // Utiliza o campo 'driver'
+
+        // Passar o nome do usuário, as rotas e os motoristas para a view
+        return view('maps', compact('userName', 'routes', 'motoristas'));
     }
 }

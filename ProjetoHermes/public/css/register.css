@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222222;
+}
+
+.register-container {
+    background-color: white;
+    padding: 50px; /* Reduzi o padding para mostrar melhor o efeito de expansão */
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px; /* Definindo a largura máxima do formulário */
+    margin: 20px; /* Espaçamento externo */
+}
+
+.register-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.register-container form {
+    margin: 0 auto;
+}
+
+.register-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.register-container input,
+.register-container button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+}
+
+.register-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+    background-color: #0056b3;
+}
+
+.register-container .error {
+    color: red;
+    font-size: 1rem;
+}
+
+.super-admin-checkbox,
+.driver-checkbox {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.driver-fields {
+    display: none; /* Inicialmente oculto */
+    padding: 20px;
+    margin-top: 20px; /* Espaçamento para separar dos outros campos */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+

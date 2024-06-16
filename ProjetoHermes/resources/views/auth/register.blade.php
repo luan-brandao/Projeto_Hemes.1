@@ -1,72 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #222222;
-        }
-
-        .register-container {
-            background-color: white;
-            padding: 150px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .register-container h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-
-        .register-container form {
-            max-width: 350px;
-            margin: 0 auto;
-        }
-
-        .register-container label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .register-container input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 1.2rem;
-        }
-
-        .register-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .register-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .register-container .error {
-            color: red;
-            font-size: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/register.css') }}">
 </head>
 <body>
     <div class="register-container">
@@ -104,10 +42,36 @@
                 <input id="password-confirm" type="password" name="password_confirmation" required>
             </div>
 
-            <div>
-                <button type="submit">Register</button>
+            <!-- Checkbox para selecionar como Super Admin -->
+            <div class="super-admin-checkbox">
+                <input id="superadmin" type="checkbox" name="superadmin" value="1">
+                <label for="superadmin">Registrar como Super Admin</label>
             </div>
+
+            <!-- Checkbox para selecionar como Motorista -->
+            <div class="driver-checkbox">
+                <input id="driver" type="checkbox" name="driver" value="1">
+                <label for="driver">Sou motorista</label>
+            </div>
+
+            <!-- Campos adicionais para motoristas -->
+            <div id="driver-fields" class="driver-fields">
+                <label for="cnh">CNH</label>
+                <input id="cnh" type="text" name="cnh">
+
+                <label for="vehicle">Veículo</label>
+                <input id="vehicle" type="text" name="vehicle">
+
+                <label for="vehicle-doc">Documentação do Veículo</label>
+                <input id="vehicle-doc" type="text" name="vehicle_doc">
+
+                <label for="passengers">Quantos passageiros cabem</label>
+                <input id="passengers" type="number" name="passengers">
+            </div>
+
+            <button type="submit">Register</button>
         </form>
     </div>
+    <script src="{{ asset('js/register.js') }}"></script>
 </body>
 </html>

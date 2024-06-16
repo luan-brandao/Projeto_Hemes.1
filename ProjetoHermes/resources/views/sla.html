@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rotas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard de Rotas</h1>
+        <div id="view-list">
+            <a href="#" class="button" onclick="showCreateForm()">Registrar Nova Rota</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Path</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="routes-list">
+                    <!-- Exemplo de rota -->
+                    <tr>
+                        <td>1</td>
+                        <td>Home</td>
+                        <td>/home</td>
+                        <td>
+                            <a href="#" class="button" onclick="showEditForm(1, 'Home', '/home')">Editar</a>
+                            <button class="button delete-button" onclick="deleteRoute(1)">Deletar</button>
+                        </td>
+                    </tr>
+                    <!-- Mais rotas aqui -->
+                </tbody>
+            </table>
+        </div>
+        <div id="form-create" class="hidden">
+            <h2>Registrar Nova Rota</h2>
+            <form onsubmit="createRoute(event)">
+                <label for="create-name">Nome da Rota:</label>
+                <input type="text" id="create-name" required>
+                <label for="create-path">Path:</label>
+                <input type="text" id="create-path" required>
+                <button type="submit" class="button">Registrar</button>
+                <a href="#" class="button" onclick="showListView()">Voltar</a>
+            </form>
+        </div>
+        <div id="form-edit" class="hidden">
+            <h2>Editar Rota</h2>
+            <form onsubmit="editRoute(event)">
+                <input type="hidden" id="edit-id">
+                <label for="edit-name">Nome da Rota:</label>
+                <input type="text" id="edit-name" required>
+                <label for="edit-path">Path:</label>
+                <input type="text" id="edit-path" required>
+                <button type="submit" class="button">Salvar</button>
+                <a href="#" class="button" onclick="showListView()">Voltar</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showCreateForm() {
+            document.getElementById('view-list').classList.add('hidden');
+            document.getElementById('form-create').classList.remove('hidden');
+        }
+
+        function showEditForm(id, name, path) {
+            document.getElementById('edit-id').value = id;
+            document.getElementById('edit-name').value = name;
+            document.getElementById('edit-path').value = path;
+            document.getElementById('view-list').classList.add('hidden');
+            document.getElementById('form-edit').classList.remove('hidden');
+        }
+
+        function showListView() {
+            document.getElementById('form-create').classList.add('hidden');
+            document.getElementById('form-edit').classList.add('hidden');
+            document.getElementById('view-list').classList.remove('hidden');
+        }
+
+        function createRoute(event) {
+            event.preventDefault();
+            const name = document.getElementById('create-name').value;
+            const path = document.getElementById('create-path').value;
+
+            // Lógica para registrar a nova rota
+            alert('Rota "' + name + '" criada com o path "' + path + '".');
+
+            // Adicionar a nova rota à tabela (exemplo)
+            const table = document.getElementById('routes-list');
+            const row = table.insertRow();
+            row.insertCell(0).innerText = table.rows.length;
+            row.insertCell(1).innerText = name;
+            row.insertCell(2).innerText = path;
+            row.insertCell(3).innerHTML = `
+                <a href="#" class="button" onclick="showEditForm(${table.rows.length}, '${name}', '${path}')">Editar</a>
+                <button class="button delete-button" onclick="deleteRoute(${table.rows.length})">Deletar</button>
+            `;
+
+            showListView();
+        }
+
+        function editRoute(event) {
+            event.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            const name = document.getElementById('edit-name').value;
+            const path = document.getElementById('edit-path').value;
+
+            // Lógica para editar a rota
+            alert('Rota ' + id + ' editada para o nome "' + name + '" e path "' + path + '".');
+
+            // Atualizar a tabela (exemplo)
+            const row = document.querySelector(`#routes-list tr:nth-child(${id})`);
+            row.cells[1].innerText = name;
+            row.cells[2].innerText = path;
+
+            showListView();
+        }
+
+        function deleteRoute(id) {
+            if (confirm('Tem certeza que deseja deletar esta rota?')) {
+                // Lógica para deletar a rota
+                alert('Rota ' + id + ' deletada.');
+                document.querySelector(`#routes-list tr:nth-child(${id})`).remove();
+            }
+        }
+    </script>
+</body>
+</html>
