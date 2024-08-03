@@ -25,6 +25,7 @@ class User extends Authenticatable
         'vehicle', // Novo campo para armazenar informações do veículo
         'vehicle_doc', // Novo campo para armazenar a documentação do veículo
         'passenger_capacity', // Novo campo para a capacidade de passageiros
+        'usuario', // Novo campo para identificar se o usuário é um 'usuario'
     ];
 
     /**
@@ -46,6 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'superadmin' => 'boolean', // Define que 'superadmin' deve ser tratado como booleano
         'driver' => 'boolean', // Define que 'driver' deve ser tratado como booleano
+        'usuario' => 'boolean', // Define que 'usuario' deve ser tratado como booleano
     ];
 }
 

@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Lista de Rotas</title>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+
     <style>
         /* Estilos CSS podem ser adicionados aqui */
         .map-container {

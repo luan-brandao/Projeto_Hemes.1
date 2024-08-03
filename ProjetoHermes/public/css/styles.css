@@ -6,6 +6,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     color: #ffffff; /* Ajuste da cor do texto para branco */
+    
 }
 
 .navbar {
@@ -56,25 +57,29 @@ body {
 
 main {
     padding: 20px;
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte em todo o main */
+    text-align: left; /* Alinha o texto à esquerda */
+    
 }
 
 main h1, main h2, main h3 {
     color: #ffffff; /* Ajuste da cor do texto para branco */
+    text-align: left; /* Alinha os cabeçalhos à esquerda */
 }
 
 main h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem; /* Aumentado ainda mais o tamanho da fonte */
     margin-bottom: 20px;
 }
 
 main h2 {
-    font-size: 2rem;
+    font-size: 3rem; /* Aumentado ainda mais o tamanho da fonte */
     margin-top: 30px;
     margin-bottom: 15px;
 }
 
 main h3 {
-    font-size: 1.5rem;
+    font-size: 2.5rem; /* Aumentado ainda mais o tamanho da fonte */
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -82,14 +87,54 @@ main h3 {
 main p {
     line-height: 1.6;
     margin-bottom: 15px;
+    text-align: left; /* Alinha os parágrafos à esquerda */
 }
 
 main ul {
     list-style-type: disc;
     padding-left: 20px;
+    text-align: left; /* Alinha a lista à esquerda */
 }
 
 main ul li {
     margin-bottom: 10px;
     color: #ffffff; /* Ajuste da cor do texto para branco */
+}
+
+/*AJUSTANDO RESPONSIVIDADE PARA CELULARES*/
+@media (min-width: 405px) and (max-width: 450px) {
+    .navbar {
+        padding: 30px 10px;
+    }
+    .navbar-nav .nav-link {
+        font-size: 20px;
+    }
+    .navbar-brand {
+        font-size: 25px;
+    }
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+/*AJUSTANDO RESPONSIVIDADE PARA TABLET*/
+@media (min-width: 350px) and (max-width: 404px) {
+    .navbar {
+        padding: 20px 6.9px;
+    }
+    .navbar-nav .nav-link {
+        font-size: 17px;
+    }
+    .navbar-brand {
+        font-size: 20px;
+    }
+    .hide-on-mobile {
+        display: none;
+    }
+    h1 {
+        font-size: 10px;
+    }
+    h2 {
+        font-size: 15px;
+    }
 }

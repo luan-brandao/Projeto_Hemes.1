@@ -88,6 +88,12 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        if ($user->driver) {
+            return redirect()->route('maps.driver');
+        }
+
         return redirect()->intended('maps'); // Redirecionar para a página inicial ou outro destino
     }
 

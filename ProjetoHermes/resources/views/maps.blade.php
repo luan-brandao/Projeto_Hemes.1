@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Mapa com Rotas</title>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
     <link rel="stylesheet" href="/css/maps.css">
 </head>
 <body>
@@ -25,7 +26,14 @@
             </div>
         </div>
         <nav>
+            @if($isSuperAdmin)
+        <button id="superUserButton">SuperAdmin</button>
+        @endif
+
+        <!-- Botão "Perfil" -->
+        <button onclick="window.location.href='{{ route('perfil') }}'">Perfil</button>
             <ul>
+                Rotas
                 @foreach ($routes as $route)
                     <li><a href="#" class="rotas" onclick="calcularRota({{ json_encode($route->coordinates) }})">{{ $route->name }}</a></li>
                 @endforeach
@@ -33,7 +41,7 @@
         </nav>
 
         <!-- Botão de abrir/fechar -->
-        <button class="toggle-button" onclick="toggleLateral()">Menu</button>
+        <button id="toggleButton" class="toggle-button" onclick="toggleLateral()">Menu</button>
     </div>
 
     <!-- Mapa do Google -->

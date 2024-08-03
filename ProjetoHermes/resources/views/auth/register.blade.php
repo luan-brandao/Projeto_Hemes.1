@@ -4,54 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/register.css') }}">
+    <link rel="stylesheet" type="text/css" href='/css/register.css'>
 </head>
 <body>
     <div class="register-container">
-        <h1>Register</h1>
+        <h1>Registro</h1>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <div>
-                <label for="name">Name</label>
+                <label for="name">Nome</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
                 @error('name')
                     <span class="error">{{ $message }}</span>
                 @enderror
-            </div>
-
-            <div>
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
                 @error('email')
                     <span class="error">{{ $message }}</span>
                 @enderror
-            </div>
 
-            <div>
-                <label for="password">Password</label>
+                <label for="password">Senha</label>
                 <input id="password" type="password" name="password" required>
                 @error('password')
                     <span class="error">{{ $message }}</span>
                 @enderror
-            </div>
 
-            <div>
-                <label for="password-confirm">Confirm Password</label>
+                <label for="password-confirm">Confirmar senha</label>
                 <input id="password-confirm" type="password" name="password_confirmation" required>
             </div>
 
             <!-- Checkbox para selecionar como Super Admin -->
-            <div class="super-admin-checkbox">
+            <!-- <div class="super-admin-checkbox">
                 <input id="superadmin" type="checkbox" name="superadmin" value="1">
                 <label for="superadmin">Registrar como Super Admin</label>
-            </div>
+            </div> -->
 
             <!-- Checkbox para selecionar como Motorista -->
             <div class="driver-checkbox">
+                <label for="driver">Motorista</label>
                 <input id="driver" type="checkbox" name="driver" value="1">
-                <label for="driver">Sou motorista</label>
             </div>
 
             <!-- Campos adicionais para motoristas -->
@@ -69,9 +62,9 @@
                 <input id="passengers" type="number" name="passengers">
             </div>
 
-            <button type="submit">Register</button>
+            <button type="submit">Registrar</button>
         </form>
     </div>
-    <script src="{{ asset('js/register.js') }}"></script>
+    <script src="/js/maps/register.js"></script>
 </body>
 </html>

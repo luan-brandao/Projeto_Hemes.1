@@ -1,35 +1,33 @@
+// maap.js
+
 var map;
 var directionsService;
 var directionsRenderer;
-var marcadorAtual; // Variável para armazenar o marcador da localização atual
-var atualizarIntervalo; // Variável para armazenar o intervalo de atualização
-var primeiraAtualizacao = true; // Variável para controlar a primeira atualização
+var marcadorUsuario; // Variável para armazenar o marcador da localização do usuário
+var marcadoresMotoristas = []; // Array para armazenar marcadores dos motoristas
 
 function initMap() {
-    // Cria o mapa
+    // Inicializa o mapa do Google
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: { lat: -22.915822982788086, lng: -42.819297790527344 }
+        center: { lat: -22.915822982788086, lng: -42.819297790527344 },
+        zoom: 14
     });
 
     // Inicializa os serviços de direção
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer({
         map: map,
-        suppressMarkers: true // Remover marcadores
+        suppressMarkers: true // Suprime os marcadores padrão
     });
 
-    // Mostrar localização atual e configurar intervalo de atualização
-    mostrarLocalizacaoAtual();
-    atualizarIntervalo = setInterval(function() {
-        mostrarLocalizacaoAtual();
-    }, 5000); // Atualiza a localização a cada 5 segundos
+    // Exibe a localização do usuário, se permitido
+    mostrarLocalizacaoUsuario();
 
-    // Adicionar marcadores para os motoristas
+    // Adiciona marcadores dos motoristas
     adicionarMarcadoresMotoristas();
 }
 
-function mostrarLocalizacaoAtual() {
+function mostrarLocalizacaoUsuario() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             var posicao = {
@@ -37,24 +35,15 @@ function mostrarLocalizacaoAtual() {
                 lng: position.coords.longitude
             };
 
-            if (marcadorAtual) {
-                // Atualiza a posição do marcador existente
-                marcadorAtual.setPosition(posicao);
-            } else {
-                // Cria um novo marcador se não existir
-                marcadorAtual = new google.maps.Marker({
-                    position: posicao,
-                    map: map,
-                    title: 'Minha Localização'
-                });
-            }
+            // Cria um marcador para a localização do usuário
+            marcadorUsuario = new google.maps.Marker({
+                position: posicao,
+                map: map,
+                title: 'Sua Localização'
+            });
 
-            // Centraliza o mapa apenas na primeira execução
-            if (primeiraAtualizacao) {
-                map.setCenter(posicao);
-                primeiraAtualizacao = false; // Marca que a primeira atualização já ocorreu
-            }
-
+            // Centraliza o mapa na localização do usuário
+            map.setCenter(posicao);
         }, function() {
             console.error('Erro: Não foi possível acessar a geolocalização.');
         });
@@ -64,16 +53,21 @@ function mostrarLocalizacaoAtual() {
 }
 
 function adicionarMarcadoresMotoristas() {
-    // Iterar sobre os dados dos motoristas e adicionar marcadores no mapa
+    // Itera sobre os dados dos motoristas para adicionar marcadores no mapa
     motoristasData.forEach(function(motorista) {
         var marker = new google.maps.Marker({
             position: { lat: parseFloat(motorista.latitude), lng: parseFloat(motorista.longitude) },
-            map: map
+            map: map,
+            title: motorista.name
         });
 
-        // Adicione informações adicionais ao marcador, se necessário
+        // Adiciona o marcador ao array de marcadores dos motoristas
+        marcadoresMotoristas.push(marker);
+
+        // Adiciona informações adicionais ao marcador, se necessário
         var infowindow = new google.maps.InfoWindow({
             content: '<h3>' + motorista.name + '</h3>'
+            // Adicione aqui mais informações como localização, etc.
         });
 
         marker.addListener('click', function() {
@@ -108,6 +102,21 @@ function calcularRota(coordinates) {
     });
 }
 
+// Função para alternar a visibilidade dos marcadores dos motoristas
+function alternarMarcadoresMotoristas(visivel) {
+    marcadoresMotoristas.forEach(function(marker) {
+        marker.setVisible(visivel);
+    });
+}
+
+// Função para centralizar o mapa na localização do usuário
+function centralizarMapaUsuario() {
+    if (marcadorUsuario) {
+        map.setCenter(marcadorUsuario.getPosition());
+    }
+}
+
+// Função para abrir/fechar a barra lateral
 function toggleLateral() {
     var lateral = document.getElementById('lateral');
     var mapElement = document.getElementById('map');
@@ -115,7 +124,11 @@ function toggleLateral() {
     mapElement.classList.toggle('lateral-aberta');
 }
 
-// Parar o intervalo de atualização quando necessário
-function pararAtualizacaoLocalizacao() {
-    clearInterval(atualizarIntervalo);
-}
+// Chamada para inicializar o mapa quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    initMap();
+});
+
+document.getElementById('toggleButton').addEventListener('click', function() {
+    this.classList.toggle('open');
+});

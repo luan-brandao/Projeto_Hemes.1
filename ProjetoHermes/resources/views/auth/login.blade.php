@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
     <title>Login</title>
     <style>
         body {
@@ -65,6 +66,23 @@
         .login-container .error {
             color: red;
             font-size: 1rem;
+        }
+        @media (max-width:450px){
+            .login-container {
+                width: 300px;
+                padding: 20px;
+            }
+
+            .login-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .login-container input, .login-container button {
+                font-size: 0.875rem;
+                padding: 8px;
+                margin-right: 20px;
+            }
+
         }
     </style>
 </head>

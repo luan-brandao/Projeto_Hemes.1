@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Simple Marker</title>
+
     <!-- The callback parameter is required, so we use console.debug as a noop -->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYpX74MDVl2DnBv3B34URbUWVXsr9aUI4&callback=console.debug&libraries=maps,marker&v=beta">
     </script>

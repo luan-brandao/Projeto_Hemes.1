@@ -2,9 +2,12 @@
 <html>
 <head>
     <title>Lista de Rotas</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/edit.css') }}">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/css/edit.css">
 </head>
 <body>
+    <button onclick="window.location.href='{{ route('maps') }}'">Voltar para o Mapa</button>
     <h1>Lista de Rotas</h1>
 
     @if(session('success'))
@@ -32,7 +35,9 @@
         @endforeach
     </ul>
 
-    <div id="map" style="display:none;"></div>
+    <div class="map-container">
+        <div id="map" style="display:none;"></div>
+    </div>
 
     <script>
         var map;

@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+
     <title>Lista de Rotas</title>
     <style>
         /* Estilos CSS podem ser adicionados aqui */

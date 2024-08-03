@@ -33,3 +33,29 @@ Route::prefix('routes')->middleware(['auth'])->group(function () {
     Route::get('/list', [RouteListController::class, 'index'])->name('routes.index');
     Route::delete('/{id}', [RouteListController::class, 'destroy'])->name('routes.destroy');
 });
+
+
+
+// routes/web.php
+
+// routes/web.php
+
+use App\Http\Controllers\MapsDriverController;
+
+Route::get('/maps-driver', [MapsDriverController::class, 'show'])->name('maps.driver');
+
+Route::post('/driver-location', [MapsDriverController::class, 'storeDriverLocation'])->name('driver.location');
+
+
+use App\Http\Controllers\UserProfileController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/perfil', function () {
+        // Sua lógica para mostrar a view de perfil aqui, como já implementado anteriormente
+        return view('perfil');
+    })->name('perfil');
+
+    Route::get('/perfil/editar', [UserProfileController::class, 'edit'])->name('perfil.edit');
+    Route::put('/perfil/editar', [UserProfileController::class, 'update'])->name('perfil.update');
+});
+

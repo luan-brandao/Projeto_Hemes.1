@@ -1,0 +1,58 @@
+/* Estilos melhorados para a página de perfil */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura total da viewport */
+}
+
+.container {
+    width: 80%; /* Largura ajustável conforme necessário */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 16px;
+    color: #666;
+}
+
+.perfil-info {
+    border-top: 2px solid #007bff;
+    padding-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item strong {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}

@@ -6,8 +6,8 @@
 /* Estilo para o botão de toggle */
 .toggle-button {
     position: absolute;
-    top: 20px; /* Ajuste conforme necessário */
-    right: -40px; /* Ajuste conforme necessário */
+    top: 7%; /* Ajuste conforme necessário */
+    right: -45px; /* Ajuste conforme necessário */
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -35,13 +35,13 @@
 
 /* Estilo para os itens de rota */
 .opcao {
-    font-size: 18px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 
 .rotas {
     font-size: 16px;
-    color: rgb(255, 136, 0);
+    color: rgb(0, 68, 255);
     text-decoration: none;
     cursor: pointer; /* Alteração para indicar que é clicável */
 }
@@ -64,4 +64,37 @@
 /* Estilo para o mapa quando a lateral está aberta */
 #map.lateral-aberta {
     margin-left: 200px; /* Deixa espaço para a lateral quando aberta */
+}
+
+@media (max-width:450px){
+    .lateral {
+        position: fixed; /* Alterado para position: fixed */
+        top: 0;
+        left: -400px; /* Alterado para fora da tela */
+        width: 400px; /* largura da div */
+        height: 100%; /* altura igual à tela */
+    
+        padding: 0px; /* espaçamento interno */
+        transition: transform 0.3s ease; /* transição suave */
+        z-index: 1000; /* Garante que a lateral esteja acima do mapa */
+    }
+   /* Estilos padrão do botão */
+.toggle-button {
+    position: absolute;
+    top: 7%; /* Ajuste conforme necessário */
+    right: -15%; /* Ajuste conforme necessário */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 9999; /* Garante que o botão esteja acima de outros elementos */
+}
+
+/* Estilos do botão quando aberto */
+.toggle-button.open {
+    top: 50%; /* Nova posição quando aberto */
+    right: 40%; /* Nova posição quando aberto */
+}
+
 }

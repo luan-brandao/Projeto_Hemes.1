@@ -18,13 +18,16 @@ class MapsController extends Controller
         // Verificar se o usuário está autenticado
         $userName = auth()->check() ? auth()->user()->name : null;
 
+        // Verificar se o usuário é superadministrador
+        $isSuperAdmin = auth()->check() ? auth()->user()->superadmin : false;
+
         // Recuperar todas as rotas do banco de dados
         $routes = Route::all();
 
         // Recuperar dados dos motoristas para adicionar marcadores no mapa
         $motoristas = User::where('driver', true)->get(); // Utiliza o campo 'driver'
 
-        // Passar o nome do usuário, as rotas e os motoristas para a view
-        return view('maps', compact('userName', 'routes', 'motoristas'));
+        // Passar o nome do usuário, se é superadmin, as rotas e os motoristas para a view
+        return view('maps', compact('userName', 'isSuperAdmin', 'routes', 'motoristas'));
     }
 }

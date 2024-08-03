@@ -67,16 +67,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Verifica se é superadmin ou motorista
+        $isSuperAdmin = isset($data['superadmin']) && $data['superadmin'];
+        $isDriver = isset($data['driver']) && $data['driver'];
+
+        // Define 'usuario' como true se não for superadmin nem motorista
+        $usuario = !$isSuperAdmin && !$isDriver;
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'superadmin' => isset($data['superadmin']) ? true : false,
-            'driver' => isset($data['driver']) ? true : false,
+            'superadmin' => $isSuperAdmin,
+            'driver' => $isDriver,
             'cnh' => $data['cnh'],
             'vehicle' => $data['vehicle'],
             'vehicle_doc' => $data['vehicle_doc'],
             'passenger_capacity' => $data['passenger_capacity'] ?? null,
+            'usuario' => $usuario,
         ]);
     }
 }
